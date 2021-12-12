@@ -76,7 +76,7 @@ class BaseRefiner:
 
         ret = {'T_init': T_init}
         if len(features_p3d) <= 0:
-            logger.info(f"Optimization failed for query {qname} due to invalid feature length")
+            #logger.info(f"Optimization failed for query due to invalid feature length")
             return {**ret, 'success': False}
 
         for level in range(len(features_p3d[0])):
