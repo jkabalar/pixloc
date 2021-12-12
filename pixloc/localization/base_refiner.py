@@ -175,10 +175,13 @@ class BaseRefiner:
             image_query = read_image(self.paths.query_images / qname)
             features_query, scales_query = self.dense_feature_extraction(
                         image_query, qname, image_scale)
-
+            if len(p3did_to_feat) <= 0:
+                logger.info(f"Optimization failed for query {qname} due to invalid feature length")
+                break
             ret = self.refine_pose_using_features(features_query, scales_query,
                                                   qcamera, T_init,
                                                   p3did_to_feat, p3dids)
+            
             if not ret['success']:
                 logger.info(f"Optimization failed for query {qname}")
                 break
