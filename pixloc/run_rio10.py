@@ -12,7 +12,7 @@ default_paths = Paths(
     reference_sfm='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/sfm-localize/sfm_superpoint_max_superglue/',
     query_list='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/sfm-localize/image_list_with_intrinsics.txt',
     global_descriptors='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/sfm-localize/feats-superpoint-n4096-rmax1600_matches-superglue_pairs_mapping_20.txt_hloc.h5',
-    retrieval_pairs='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/sfm-localize/image_list_map.txt',
+    retrieval_pairs='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/sfm-localize/pairs_localization_20.txt',
     results='pixloc_RIO10_{scene}.txt',
 )
 
