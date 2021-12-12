@@ -7,12 +7,12 @@ from .utils.io import write_pose_results
 from .utils.eval import evaluate
 
 default_paths = Paths(
-    query_images='{root}/{scene}/mapping/sensors/records_data/seq01_01/',
-    reference_images='{root}/{scene}/mapping/sensors/records_data/seq01_02/',
-    reference_sfm='{root}/{scene}/sfm-localize/sfm_superpoint_max_superglue/',
-    query_list='{root}/{scene}/sfm-localize/image_list_with_intrinsics.txt',
-    global_descriptors='{root}/{scene}/sfm-localize/feats-superpoint-n4096-rmax1600_matches-superglue_pairs_mapping_20.txt_hloc.h5',
-    retrieval_pairs='{root}/{scene}/image_list_map.txt',
+    query_images='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/mapping/sensors/records_data/seq01_01/',
+    reference_images='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/validation/sensors/records_data/seq01_02/',
+    reference_sfm='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/sfm-localize/sfm_superpoint_max_superglue/',
+    query_list='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/sfm-localize/image_list_with_intrinsics.txt',
+    global_descriptors='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/sfm-localize/sfm-localize/feats-superpoint-n4096-rmax1600_matches-superglue_pairs_mapping_20.txt_hloc.h5',
+    retrieval_pairs='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/sfm-localize/image_list_map.txt',
     results='pixloc_RIO10_{scene}.txt',
 )
 
