@@ -58,7 +58,7 @@ SCENES = ['scene01']
 
 
 def main():
-    parser = create_argparser('Cambridge')
+    parser = create_argparser('RIO10')
     parser.add_argument('--root', default="kapture-localization/pipeline/examples/datasets/RIO10")
     parser.add_argument('--scenes', default=SCENES, choices=SCENES, nargs='+')
     parser.add_argument('--eval_only', action='store_true')
