@@ -7,8 +7,8 @@ from .utils.io import write_pose_results
 from .utils.eval import evaluate
 
 default_paths = Paths(
-    query_images='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/mapping/sensors/records_data/seq01_01/',
-    reference_images='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/validation/sensors/records_data/seq01_02/',
+    reference_images='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/mapping/sensors/records_data/',
+    query_images='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/validation/sensors/records_data/',
     reference_sfm='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/sfm-localize/sfm_superpoint_max_superglue/',
     query_list='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/sfm-localize/image_list_with_intrinsics.txt',
     global_descriptors='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/sfm-localize/feats-superpoint-n4096-rmax1600_matches-superglue_pairs_mapping_20.txt_hloc.h5',
