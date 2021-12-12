@@ -51,7 +51,7 @@ def parse_retrieval(path: Path) -> Dict[str, List[str]]:
     retrieval = defaultdict(list)
     with open(path, 'r') as f:
         for p in f.read().rstrip('\n').split('\n'):
-            q, r, score= p.split(',')
+            q, r, score= p.split(', ')
             retrieval[q].append(r)
     return dict(retrieval)
 
