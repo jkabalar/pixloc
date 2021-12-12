@@ -73,6 +73,12 @@ class BaseRefiner:
         # decompose descriptors and uncertainities, normalize descriptors
         weights_ref = []
         features_ref = []
+
+        ret = {'T_init': T_init}
+        if len(features_p3d) <= 0:
+            logger.info(f"Optimization failed for query {qname} due to invalid feature length")
+            return {**ret, 'success': False}
+
         for level in range(len(features_p3d[0])):
             feats = torch.stack([feat[level] for feat in features_p3d], dim=0)
             feats = feats.to(self.device)
@@ -96,7 +102,6 @@ class BaseRefiner:
         p3d = np.stack([self.model3d.points3D[p3did].xyz for p3did in p3dids])
 
         T_i = T_init
-        ret = {'T_init': T_init}
         # We will start with the low res feature map first
         for idx, level in enumerate(reversed(range(len(features_query)))):
             F_q, F_ref = features_query[level], features_ref[level]
@@ -125,6 +130,7 @@ class BaseRefiner:
                 return {**ret, 'success': False}
             T_i = T_opt
 
+
         # Compute relative pose w.r.t. initilization
         T_opt = T_opt.cpu().double()
         dR, dt = (T_init.inv() @ T_opt).magnitude()
@@ -147,7 +153,7 @@ class BaseRefiner:
         rnames = [self.model3d.dbs[i].name for i in dbid_to_p3dids.keys()]
         images_ref = [read_image(self.paths.reference_images / n)
                       for n in rnames]
-
+        
         for image_scale in multiscales:
             # Compute the reference observations
             # TODO: can we compute this offline before hand?
@@ -175,13 +181,10 @@ class BaseRefiner:
             image_query = read_image(self.paths.query_images / qname)
             features_query, scales_query = self.dense_feature_extraction(
                         image_query, qname, image_scale)
-            if len(p3did_to_feat) <= 0:
-                logger.info(f"Optimization failed for query {qname} due to invalid feature length")
-                break
+            
             ret = self.refine_pose_using_features(features_query, scales_query,
                                                   qcamera, T_init,
                                                   p3did_to_feat, p3dids)
-            
             if not ret['success']:
                 logger.info(f"Optimization failed for query {qname}")
                 break
