@@ -7,6 +7,7 @@ from .utils.io import write_pose_results
 from .utils.eval import evaluate
 
 default_paths = Paths(
+    hloc_logs='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/sfm-localize/sfm-localize/results_superpoint_max_superglue.txt_logs.pkl',
     reference_images='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/mapping/sensors/records_data/',
     query_images='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/validation/sensors/records_data/',
     reference_sfm='../kapture-localization/pipeline/examples/datasets/RIO10/scene01/sfm-localize/sfm-localize/sfm_superpoint_max_superglue/',
