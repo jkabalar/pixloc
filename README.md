@@ -91,7 +91,11 @@ To perform the localization on all queries of one of the supported datasets, sim
 ```
 python -m pixloc.run_[7Scenes|Cambridge|Aachen|CMU|RobotCar]  # choose one
 ```
-
+```
+python -m pixloc.download --select checkpoints
+cp -r outputs/training/pixloc_cmu/ outputs/training/pixloc_rio10
+python -m pixloc.run_rio10
+```
 Optional flags:
 
 - `--results path_to_output_poses` defaults to `outputs/results/pixloc_[dataset_name].txt`
